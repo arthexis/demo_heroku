@@ -1,0 +1,12 @@
+{
+  "name": "Heroku Demo",
+  "description": "Example.",
+  "keywords": [
+    "demo"
+  ],
+  "image": "heroku/python",
+  "repository": "https://github.com/arthexis/demo_heroku",
+  "addons": [
+    "heroku-postgresql"
+  ]
+}

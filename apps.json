@@ -8,5 +8,15 @@
   "repository": "https://github.com/arthexis/demo_heroku",
   "addons": [
     "heroku-postgresql"
-  ]
+  ],
+  "env": {
+    "SECRET_KEY": {
+      "description": "Validate signed cookies using this key.",
+      "generator": "secret"
+    },
+    "DEBUG": {
+      "description": "Enable debugging functions.",
+      "value": "True"
+    }
+  }
 }

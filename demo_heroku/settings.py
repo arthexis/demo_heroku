@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 import sys
 import dj_database_url
+from .utils import *
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -23,10 +24,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'z7th)i46$42cl462s*wr%l8t*f$7m2u%036**r-e3v^e=5wadv'
+SECRET_KEY = getenv('SECRET_KEY', 'z7th)i46$42cl462s*wr%l8t*f$7m2u%036**r-e3v^e=5wadv')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = getenv('DEBUG', True)
 
 # Logging configuration specialized for Heroku's console stream logging
 # An "audit" logger has been added that sends extra logs to an audit stream
@@ -68,7 +69,7 @@ LOGGING = {
 
 ALLOWED_HOSTS = ['*']
 
-INTERNAL_IPS = ['127.0.0.1']
+INTERNAL_IPS = getenv('INTERNAL_IPS', ['127.0.0.1'])
 
 
 # Application definition
@@ -84,6 +85,8 @@ INSTALLED_APPS = [
     'whitenoise',
     'localflavor',
     'djmoney',
+    'django_extensions',
+    'debug_toolbar',
     'membership',
 ]
 
@@ -96,6 +99,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'demo_heroku.urls'

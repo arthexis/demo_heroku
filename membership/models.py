@@ -14,7 +14,9 @@ class Membership(User):
     objects = money_manager(MembershipManager())
 
     start_date = DateField("Inicio Membresía", auto_now_add=True)
-    balance = MoneyField("Balance", max_digits=10, decimal_places=2, default=Money(100, MXN), default_currency=MXN)
+    balance = MoneyField(
+        "Balance", max_digits=10, decimal_places=2, null=True, blank=True,
+        default=Money(100, MXN), default_currency=MXN)
     mx_state = MXStateField("Ubicación", default='NLE')
 
     class Meta:
